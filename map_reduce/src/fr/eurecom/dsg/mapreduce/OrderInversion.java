@@ -101,11 +101,11 @@ public class OrderInversion extends Configured implements Tool {
 			else {
                 TextPair p = new TextPair();
                 p.set(new Text(key.key1), new Text(key.key2));
-                //context.write(p, new DoubleWritable(count/wordCount));
+                context.write(p, new DoubleWritable(count/wordCount));
 			}
-            TextPair p = new TextPair();
-            p.set(new Text(key.key1), new Text(key.key2));
-            context.write(p, new DoubleWritable(count));
+//            TextPair p = new TextPair();
+//            p.set(new Text(key.key1), new Text(key.key2));
+//            context.write(p, new DoubleWritable(count));
 		}
 	}
 
@@ -132,6 +132,8 @@ public class OrderInversion extends Configured implements Tool {
 		job.setOutputValueClass(DoubleWritable.class);
 		// TODO: set job output format
 		job.setOutputFormatClass(TextOutputFormat.class);
+		
+		job.setPartitionerClass(PartitionerTextPair.class);
 		// TODO: add the input file as job input (from HDFS) to the variable
 		// inputFile
 		TextInputFormat.setInputPaths(job, this.inputPath);

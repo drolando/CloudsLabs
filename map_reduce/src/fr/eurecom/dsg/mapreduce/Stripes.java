@@ -142,41 +142,29 @@ class StripesReducer extends Reducer<Text, // TODO: change Object to input key t
 			Context context) throws IOException, InterruptedException {
 		
 		
-//		Iterator<StringToIntMapWritable> it = values.iterator();
-//		HashMap<String, Integer> map = new HashMap<String, Integer>();
-//		
-//		while(it.hasNext()) {
-//			StringToIntMapWritable t = it.next();
-//			for (String k : t.keySet()) {
-//				Integer old = map.get(k);
-//				if (old == null)
-//					old = new Integer(0);
-//				
-//				old += t.get(k);
-//				map.put(k, old);
-//			}
-//		}
-//		
-//		String out = ": {";
-//		for (String k : map.keySet()) {
-//			out += k + ":" + map.get(k).toString() + ", ";
-//		}
-//		out += "}";
-//		
-//		
-		Iterator<StringToIntMapWritable> it2 = values.iterator();
-		String str = "[";
-		while(it2.hasNext()) {
-			StringToIntMapWritable t = it2.next();
-			str += "{";
-			for (String k : t.keySet()) {
-				str += k + " " + t.get(k) + ", ";
-			}
-			str += "}, ";
-		}
-		str += "]";
+		Iterator<StringToIntMapWritable> it = values.iterator();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		
-		context.write(key, new Text(str));
+		while(it.hasNext()) {
+			StringToIntMapWritable t = it.next();
+			for (String k : t.keySet()) {
+				Integer old = map.get(k);
+				if (old == null)
+					old = new Integer(0);
+				
+				old += t.get(k);
+				map.put(k, old);
+			}
+		}
+		
+		String out = ": {";
+		for (String k : map.keySet()) {
+			out += k + ":" + map.get(k).toString() + ", ";
+		}
+		out += "}";
+		
+				
+		context.write(key, new Text(out));
 		
 
 		// TODO: implement the reduce method
