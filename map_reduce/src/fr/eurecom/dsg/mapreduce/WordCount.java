@@ -87,15 +87,19 @@ class WCMapper extends Mapper<LongWritable, // TODO: change Object to input key 
   @Override
   protected void map(LongWritable key, // TODO: change Object to input key type
                      Text value, // TODO: change Object to input value type
-                     Context context) throws IOException, InterruptedException {
-	  String[] words = value.toString().split(" ");
-	  for(int i=0; i<words.length; i++) {
-		  if (words[i].trim().length() > 0)
-			  context.write(new Text(words[i]), new LongWritable(1));
-	  }
-	  // TODO: implement the map method (use context.write to emit results)
-	  
-  }
+			Context context) throws IOException, InterruptedException {
+
+		String line[] = value.toString().split("[^a-zA-Z]+");
+
+		for (String word : line) {
+			if (word.trim().length() == 0)
+				continue;
+			word = word.toLowerCase();
+			context.write(new Text(word), new LongWritable(1));
+		}
+		// TODO: implement the map method (use context.write to emit results)
+
+	}
 
 }
 
