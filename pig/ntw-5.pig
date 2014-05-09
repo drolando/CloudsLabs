@@ -6,29 +6,22 @@
 -- Load input data from local input directory
 RUN load.pig;
 
--- group by client ip
+-- Group by client IP
 connections = GROUP dataset BY ip_c;
 
 -- compute the number of bytes sent by each client
-upload = FOREACH connections GENERATE group as ip, SUM(dataset.unique_bytes_c) as uploaded, MAX(dataset.unique_bytes_c) as biggest;
+upload = FOREACH connections GENERATE group as ip, SUM(dataset.unique_bytes_c) as up;
 
 -- group operation required by the FOREACH
 tmp = GROUP upload ALL;
+total = FOREACH tmp GENERATE SUM(upload.up);
 
 -- get the top 100 clients
-topResults = FOREACH tmp {
-    result = TOP(100, 1, upload);
-    GENERATE FLATTEN(result);
-}
+top = FOREACH tmp { result = TOP(100, 1, upload); GENERATE FLATTEN(result); }
 
-total_group = GROUP dataset ALL;
-total = FOREACH total_group GENERATE SUM(dataset.unique_bytes_c) as sum;
+ordered = ORDER top by upload::up DESC;
 
-topRes_grouped = GROUP topResults BY ip;
-
-DESCRIBE topRes_grouped;
-output_data = FOREACH topRes_grouped GENERATE topResults.ip as ip, topResults.uploaded as total, topResults.biggest as largest_tcp, topRes_grouped.topResults.biggest/total.$0 as ratio;
+output_data = FOREACH ordered GENERATE ip, ((double)up)/total.$0;
 
 -- Start executing the script and save the results
--- STORE output_data INTO 'output/ntw_5';
-DUMP output_data;
+STORE output_data INTO 'output/ntw_5';

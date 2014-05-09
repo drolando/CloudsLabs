@@ -2,6 +2,9 @@
   find the top 100 users per uploaded bytes.
 */
 
+-- set default parallel to 20
+set default_parallel 20;
+
 -- Load input data from local input directory
 RUN load.pig;
 

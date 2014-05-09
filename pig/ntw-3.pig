@@ -2,6 +2,9 @@
   For each client IP, compute the sum of uploaded, downloaded and total (up+down) transmitted bytes.
 */
 
+-- set default parallel to 20
+set default_parallel 20;
+
 -- Load input data from local input directory
 RUN load.pig;
 

@@ -6,6 +6,9 @@
     pig -x mapreduce -param group='week' -f ntw-1c.pig
 */
 
+-- set default parallel to 20
+set default_parallel 20;
+
 -- Load input data from local input directory
 RUN load.pig;
 

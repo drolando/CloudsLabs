@@ -1,3 +1,7 @@
+
+-- set default parallel to 20
+set default_parallel 20;
+
 -- Load input data from local input directory
 RUN load.pig;
 
@@ -15,4 +19,5 @@ output_data = FOREACH united GENERATE group, COUNT(dataset);
 sorted_data = ORDER output_data BY group;
 
 -- Store the output and start to execute the script
-STORE sorted_data INTO 'output/ntw_1b';
+--STORE sorted_data INTO 'output/ntw_1b';
+EXPLAIN sorted_data;

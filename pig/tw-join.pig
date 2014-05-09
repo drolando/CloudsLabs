@@ -1,5 +1,5 @@
 -- set default parallel to 20
-set default_parallel 40;
+set default_parallel 20;
 
 -- TODO: load the input dataset, located in ./local-input/OSN/tw.txt
 A = LOAD '/laboratory/input/twitter-big-sample.txt' AS (id: long, fr: long);

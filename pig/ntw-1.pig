@@ -10,4 +10,5 @@ conn_per_client = FOREACH ip_client GENERATE group, COUNT(dataset);
 
 
 -- Store the output (and start to execute the script)
-STORE conn_per_client INTO 'output/ntw_1';
+--STORE conn_per_client INTO 'output/ntw_1';
+EXPLAIN conn_per_client;
