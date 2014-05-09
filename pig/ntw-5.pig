@@ -3,6 +3,9 @@
 
 */
 
+-- set default parallel to 20
+set default_parallel 20;
+
 -- Load input data from local input directory
 RUN load.pig;
 
@@ -14,14 +17,17 @@ upload = FOREACH connections GENERATE group as ip, SUM(dataset.unique_bytes_c) a
 
 -- group operation required by the FOREACH
 tmp = GROUP upload ALL;
-total = FOREACH tmp GENERATE SUM(upload.up);
 
 -- get the top 100 clients
 top = FOREACH tmp { result = TOP(100, 1, upload); GENERATE FLATTEN(result); }
 
-ordered = ORDER top by upload::up DESC;
+biggest = FOREACH connections GENERATE group as ip, MAX(dataset.unique_bytes_c) as big;
 
-output_data = FOREACH ordered GENERATE ip, ((double)up)/total.$0;
+joined = JOIN biggest BY ip, top by upload::ip;
+
+
+output_data = FOREACH joined GENERATE upload::ip, ((double)big)/up;
 
 -- Start executing the script and save the results
 STORE output_data INTO 'output/ntw_5';
+
