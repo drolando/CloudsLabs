@@ -1,0 +1,81 @@
+Starting ZK:
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:host.name=megantic.eurecom.fr
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.version=1.6.0_24
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.vendor=Sun Microsystems Inc.
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.home=/usr/java/jre1.6.0_24
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.class.path=dist/ZookeeperLab.jar
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.library.path=/usr/java/jre1.6.0_24/lib/i386/server:/usr/java/jre1.6.0_24/lib/i386:/usr/java/jre1.6.0_24/../lib/i386:/usr/java/jre/lib:/usr/local/lib:/usr/lib:/lib:.:/usr/java/packages/lib/i386:/lib:/usr/lib
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.io.tmpdir=/tmp
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:java.compiler=<NA>
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.name=Linux
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.arch=i386
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:os.version=2.6.29.6-213.eurecom.fc11.i686.PAE
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:user.name=rolando
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:user.home=/homes/rolando
+[main] INFO org.apache.zookeeper.ZooKeeper - Client environment:user.dir=/homes/rolando/workspace/clouds/zookeeper/ZookeeperLab
+[main] INFO org.apache.zookeeper.ZooKeeper - Initiating client connection, connectString=motisma:2181 sessionTimeout=3000 watcher=fr.eurecom.rs.clouds.ZookeeperLab.watches.Configuration@183f74d
+Finished starting ZK: State:CONNECTING sessionid:0x0 local:null remoteserver:null lastZxid:0 xid:1 sent:0 recv:0 queuedpkts:0 pendingresp:0 queuedevents:0
+[main-SendThread(motisma.eurecom.fr:2181)] INFO org.apache.zookeeper.ClientCnxn - Opening socket connection to server motisma.eurecom.fr/172.17.11.37:2181. Will not attempt to authenticate using SASL (Unable to locate a login configuration)
+[main-SendThread(motisma.eurecom.fr:2181)] INFO org.apache.zookeeper.ClientCnxn - Socket connection established to motisma.eurecom.fr/172.17.11.37:2181, initiating session
+[main-SendThread(motisma.eurecom.fr:2181)] INFO org.apache.zookeeper.ClientCnxn - Session establishment complete on server motisma.eurecom.fr/172.17.11.37:2181, sessionid = 0x146227e9d4e0502, negotiated timeout = 4000
+STAT:: lczxid 4927
+STAT:: mzxid 5443
+STAT:: ctime 1401188474621
+STAT:: mtime 1401278415347
+STAT:: version 40
+STAT:: cversion 0
+STAT:: aversion 0
+STAT:: ephemeralOwner 0
+STAT:: dataLength 15
+STAT:: numChildren 0
+STAT:: pzxid 4927
+
+STAT:: lczxid 4927
+STAT:: mzxid 5448
+STAT:: ctime 1401188474621
+STAT:: mtime 1401278605172
+STAT:: version 41
+STAT:: cversion 0
+STAT:: aversion 0
+STAT:: ephemeralOwner 0
+STAT:: dataLength 15
+STAT:: numChildren 0
+STAT:: pzxid 4927
+
+STAT:: lczxid 4927
+STAT:: mzxid 5449
+STAT:: ctime 1401188474621
+STAT:: mtime 1401278606665
+STAT:: version 42
+STAT:: cversion 0
+STAT:: aversion 0
+STAT:: ephemeralOwner 0
+STAT:: dataLength 15
+STAT:: numChildren 0
+STAT:: pzxid 4927
+
+STAT:: lczxid 4927
+STAT:: mzxid 5450
+STAT:: ctime 1401188474621
+STAT:: mtime 1401278607798
+STAT:: version 43
+STAT:: cversion 0
+STAT:: aversion 0
+STAT:: ephemeralOwner 0
+STAT:: dataLength 15
+STAT:: numChildren 0
+STAT:: pzxid 4927
+
+STAT:: lczxid 4927
+STAT:: mzxid 5451
+STAT:: ctime 1401188474621
+STAT:: mtime 1401278608728
+STAT:: version 44
+STAT:: cversion 0
+STAT:: aversion 0
+STAT:: ephemeralOwner 0
+STAT:: dataLength 15
+STAT:: numChildren 0
+STAT:: pzxid 4927
+
